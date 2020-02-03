@@ -29,8 +29,8 @@ This file is empty because it's not needed for this integration.
 ## Configuration options for this integration.
 | Label                  | Key          | Default Value   | Validates presence? |
 | ---------------------- | ------------ | --------------- | :-----------------: |
-| Google Property_ID     |  Property_ID |  Default value  |          √          |
-| Anonymize IP-Address    |  anonymizeIp |  false          |                     |
+| Google Property_ID     |  Property_ID |                 |          √          |
+| Anonymize IP-Address   | anonymizeIp  |  false          |                     |
 
 
 ##  Customization
