@@ -1,5 +1,5 @@
 [<img src="versacommerce.png" width="250px" align="right" alt="VersaCommerce.de">](https://www.versacommerce.de/?utm_source=github)
-[<img src="analytics.png" width="250px" align="right" alt="analytics.google.com">](https://analytics.google.com/?utm_source=www.versacommerce.de)
+[<img src="analytics.png" width="120px" align="right" alt="analytics.google.com">](https://analytics.google.com/?utm_source=www.versacommerce.de)
 
 [VersaCommerce] [integration] [javascript] [GoogleAnalytics]
 
