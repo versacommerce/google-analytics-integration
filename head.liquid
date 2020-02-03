@@ -1,0 +1,55 @@
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ integration['Property_ID'] }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ integration['Property_ID'] }}', { 'anonymize_ip': '{{ integration['anonymizeIp'] }}' });
+
+  gtag('event', 'add_to_cart', {
+    "items": [
+      {% for item in cart.items %}
+      {
+        "id": '{{ item.id }}',
+        "name": '{{ item.title }}',
+        "brand": '{{ item.vendor }}',
+        "category": '{{ item.category }}',
+        "quantity": '{{ item.quantity }}',
+        "price": '{{ item.price }}'
+      },
+      {% endfor %}
+    ]
+  });
+
+  {% if template == 'thankyou' %}
+    gtag('event', 'purchase', {
+      'transaction_id': '{{ cart.order_code }}',
+      'affiliation': '',
+      {% if shop.shopify_compatibility? == true %}
+        'value': '{{ cart.total_price | divided_by: 100.0 }}',
+      {% else %}
+        'value': '{{ cart.total_price }}',
+      {% endif %}
+
+      'shipping': '',
+      'tax': '{{ cart.tax_amount }}',
+      "items": [
+         {% for item in cart.items %}
+         {
+         	'id': '{{ cart.order_code }}',
+         	'name': '{{ item.product.title }}',
+     			'sku': '{{ item.code }}',
+     			'category': '{{ item.category }}',
+     			{% if shop.shopify_compatibility? == true %}
+        		'price': '{{ item.line_price | divided_by: 100.0 }}',
+        	{% else %}
+        		'price': '{{ item.line_price }}',
+         	{% endif %}
+        	'quantity': '{{ item.quantity }}'
+         },
+         {% endfor %}
+       ]
+    });
+	{% endif%}
+</script>
